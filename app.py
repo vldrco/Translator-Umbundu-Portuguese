@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 def chat_openai_instance():
     return ChatOpenAI(
-        openai_api_key="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",
+        openai_api_key="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",
         model="gpt-4o-mini",
     )
 

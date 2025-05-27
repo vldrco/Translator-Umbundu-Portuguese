@@ -2,23 +2,23 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 
-def chat_openai_instance():
+def chat_openai_instance(api_key):
     return ChatOpenAI(
-        openai_api_key="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",
-        model="gpt-4o-mini",
+        openai_api_key=api_key,
+        max_completion_tokens=1000,
+        model="ft:gpt-4o-mini-2024-07-18:personal:translator-umbundu:AzrnStGy",
     )
 
-def format_prompt(source_language, target_language, input_text):
+def format_prompt(input_text):
     return ChatPromptTemplate.from_messages([
-    ("system", "Translate from {source_language} to {target_language}. You respond only in {target_language}"),
+    ("system", "You are a Portuguese to Umbundu translator."),
     ("user", "{input}")
     ])
 
-def translate(input_text, source_language, target_language):
-    llm = chat_openai_instance()
-    prompt = format_prompt(source_language, target_language, input_text)
+def translate(input_text, api_key):
+    llm = chat_openai_instance(api_key)
+    prompt = format_prompt(input_text)
     output_parser = StrOutputParser()
     chain = prompt | llm | output_parser
-    response = chain.invoke({"input": input_text, "source_language": source_language, "target_language": target_language})
+    response = chain.invoke({"input": input_text})
     return response
-

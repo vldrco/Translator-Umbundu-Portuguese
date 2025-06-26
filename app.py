@@ -5,7 +5,6 @@ from langchain_core.prompts import ChatPromptTemplate
 def chat_openai_instance(api_key):
     return ChatOpenAI(
         openai_api_key=api_key,
-        max_completion_tokens=1000,
         model="ft:gpt-4o-mini-2024-07-18:personal:translator-umbundu:AzrnStGy",
     )
 

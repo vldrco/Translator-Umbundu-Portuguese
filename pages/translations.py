@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 
 st.page_link("main.py", label="Voltar para o tradutor", icon="🔙")
+st.sidebar.markdown("## Navegação")
+st.sidebar.page_link("main.py", label="🏠 Início")
+st.sidebar.page_link("pages/translations.py", label="Traduções disponíveis", icon="📄")
 
 df = pd.DataFrame(
     [

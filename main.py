@@ -3,7 +3,9 @@ from app import translate
 
 st.title('Tradutor Português - Umbundo')
 
-api_key = st.sidebar.text_input('Chave OpenAI', type='password')
+api_key = st.secrets["API_KEY"]
+st.sidebar.markdown("## Navegação")
+st.sidebar.page_link("main.py", label="🏠 Início")
 st.sidebar.page_link("pages/translations.py", label="Traduções disponíveis", icon="📄")
 
 with st.form('my_form'):
